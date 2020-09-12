@@ -15,8 +15,10 @@ class HelloCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        $soapClient = new \SoapClient('localhost:8000/soap?wsdl');
-        $result = $soapClient->hello('hello', ['name' => 'Kes']);
+        $soapClient = new \SoapClient('http://soap-server.test/soap?wsdl');
+        $result = $soapClient->hello('Kestutis', ['name' => 'Kes']);
+
+        $io->writeln($result);
 
         $io->success('Success.');
 
